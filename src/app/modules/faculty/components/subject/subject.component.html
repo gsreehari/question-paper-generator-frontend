@@ -1,0 +1,66 @@
+<div class="main">
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-3">
+            <button class="btn btn-primary" (click)="changeInputType(1)">Manual</button>
+        </div>
+        <div class="col-lg-3">
+            <button class="btn btn-primary" (click)="changeInputType(2)">Excel</button>
+        </div>
+    </div>
+    <div class="row" style="margin-top:20px" *ngIf="inputType === 1">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-title">
+                    <p>{{subject.subjectName}}<span style="font-size: 15px;"> ({{subject.subjectScheme}})</span></p>
+                </div>
+                <div class="card-body">
+                    <form (ngSubmit)='submit()'>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Question</label>
+                            <textarea class="form-control" name='question' rows="3" [(ngModel)]="question"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Question image</label>
+                            <input type="file" namw="questionimage" class="form-control" (change)="handleFileInput($event.target.files)">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Question unit</label>
+                                    <select class="form-control" name="unit" [(ngModel)]="unit">
+                                        <option *ngFor='let item of marksarray; let i = index;' [value]='item.value'>{{item.text}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Question marks</label>
+                                    <input type="number" name="marks" class="form-control" [(ngModel)]="marks">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top:20px" *ngIf="inputType === 2">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-title">
+                    <p>{{subject.subjectName}}<span style="font-size: 15px;"> ({{subject.subjectScheme}})</span></p>
+                </div>
+                <div class="card-body">
+                    <input type="file" class="form-control" (change)="onFileChange($event)" name="file" accept=".xlsx,.xls"><br>
+                    <button class="btn btn-sm btn-primary" (click)="submitExcel()">Upload</button><br><br>
+                    <h1>Excel template</h1>
+                    <img src="../../../../../assets/images/excelupload.png" style="width:100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

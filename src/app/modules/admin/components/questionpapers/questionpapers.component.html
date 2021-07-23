@@ -1,0 +1,40 @@
+<div class="main">
+    <div class="mat-elevation-z8 t">
+        <div class="filter">
+            <mat-form-field>
+              <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+          </div>
+        <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="questionPaperId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Question paper id </th>
+                <td mat-cell *matCellDef="let element"> <a href="" [routerLink]="['/admin/questionPaper',element.questionPaperId]" class="question-link">{{element.questionPaperId}}</a> </td>
+            </ng-container>
+            <ng-container matColumnDef="subjectName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Subject name </th>
+                <td mat-cell *matCellDef="let element"> <a href="" class="question-link" [routerLink]="['/admin/subjects/subject',element.subjectId]">{{element.subjectName}}</a> </td>
+            </ng-container>
+            <ng-container matColumnDef="userDisplayName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> User </th>
+                <td mat-cell *matCellDef="let element"> <a href="" class="question-link" [routerLink]="['/admin/users/user',element.userId]">{{element.userDisplayName}}</a></td>
+            </ng-container>
+            <ng-container matColumnDef="generatedAt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Generated at </th>
+                <td mat-cell *matCellDef="let element"> {{element.generatedAt}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <!-- <mat-paginator
+                  [pageSize]="10"
+                  [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator> -->
+        </table>
+        <mat-paginator 
+            #paginator 
+            [pageSize]="10" 
+            [pageSizeOptions]="[10, 20, 25]" 
+            showFirstLastButtons
+        >
+        </mat-paginator>
+    </div>
+</div>

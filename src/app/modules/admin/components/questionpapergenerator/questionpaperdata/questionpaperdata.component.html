@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>{{data.subjectName}}</h1>
+<div mat-dialog-content>
+    <p>Exam Details</p><br>
+    <select class="form-control" [(ngModel)]="data.examType">
+        <option selected disabled value="select">Select exam type</option>
+        <option value="first internal">First Internal</option>
+        <option value="second internal">Second Internal</option>
+        <option value="external">External</option>
+    </select>
+    <br>
+    <input type="date" name="examdate" id="" class='form-control' placeholder="Exam date" [(ngModel)]="data.examDate">
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Generate Paper</button>
+</div>

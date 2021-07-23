@@ -1,0 +1,113 @@
+<div class="main">
+    <section class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-sm-2 col-xs-1"></div>
+            <div class="col-md-4 col-sm-8 col-xs-10 login-container">
+                <div class="login-nav">
+                    <div class="nav-items">
+                        <button (click)='changeLogin(2)' class="nav-item"
+                            [ngClass]="loginType === 2 ? 'active' : ''">Facluty</button>
+                        <button (click)='changeLogin(1)' class="nav-item"
+                            [ngClass]="loginType === 1 ? 'active' : ''">Admin</button>
+                        <div class="underline"></div>
+                        <div class="underline-active" [ngStyle]="{'left': loginType == 2 ? '0%' : '50%' }"></div>
+                    </div>
+                </div>
+                <div class="faculty-login"
+                    [ngStyle]="{'transform': loginType == 2 ? 'translateX(0%)' : 'translateX(-100%)' }">
+                    <div class="form-main">
+                        <div class="title">
+                            <p>Faculty Login</p>
+                        </div>
+                        <form [formGroup]="loginForm" (ngSubmit)="submit()">
+                            <div class="content">
+                                <div class="email-input">
+                                    <div class="floating-label">      
+                                        <input type="text" class="floating-input" placeholder=" " formControlName="username" required />
+                                        <label>Username</label>
+                                      </div>
+                                    <span class="error"
+                                        *ngIf="username.invalid && username.touched && !username.dirty">Please enter
+                                        username</span>
+                                    <!-- <span class="error" *ngIf="email.dirty && email.invalid">Please enter valid email</span> -->
+                                </div>
+                                <div class="password-input">
+                                    <div class="floating-label">      
+                                        <input type="password" class="floating-input" formControlName="password" placeholder=" " required />
+                                        <label>Password</label>
+                                      </div>
+                                    
+                                    <span class="error" *ngIf="password.invalid && password.touched">Please enter
+                                        password</span>
+                                </div>
+                                <!-- <div class="clg-input">
+                                    <select class="form-control" formControlName="clg" (change)="changeSuit($event)">
+                                        <option>Select College</option>
+                                        <option [value]="c" *ngFor="let c of colleges">{{c}}</option>
+                                    </select>
+                                    <span class="error" *ngIf="password.invalid && password.touched">Please enter password</span>
+                                </div> -->
+                            </div> 
+                            <div class="fplink">
+                                <a [routerLink]="['reset password']">Forgot Password?</a>
+                            </div>
+                            <div class="actions">
+                                <button class="btnd" type="submit"
+                                    *ngIf="username.valid && password.valid">Login</button>
+                                <button class="btnd" type="submit" disabled *ngIf="!username.valid || !password.valid">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="admin-login"
+                    [ngStyle]="{'transform': loginType == 1 ? 'translateX(0%)' : 'translateX(100%)' }">
+                    <div class="form-main">
+                        <div class="title">
+                            <p>Admin Login</p>
+                        </div>
+                        <form [formGroup]="loginForm" (ngSubmit)="submit()">
+                            <div class="content">
+                                <div class="email-input">
+                                    <div class="floating-label">      
+                                        <input type="text" class="floating-input" placeholder=" " formControlName="username" required />
+                                        <label>Username</label>
+                                      </div>
+                                    <span class="error"
+                                        *ngIf="username.invalid && username.touched && !username.dirty">Please enter
+                                        username</span>
+                                    <!-- <span class="error" *ngIf="email.dirty && email.invalid">Please enter valid email</span> -->
+                                </div>
+                                <div class="password-input">
+                                    <div class="floating-label">      
+                                        <input type="password" class="floating-input" formControlName="password" placeholder=" " required />
+                                        <label>Password</label>
+                                      </div>
+                                    
+                                    <span class="error" *ngIf="password.invalid && password.touched">Please enter
+                                        password</span>
+                                </div>
+                                <!-- <div class="clg-input">
+                                    <select class="form-control" formControlName="clg" (change)="changeSuit($event)">
+                                        <option>Select College</option>
+                                        <option [value]="c" *ngFor="let c of colleges">{{c}}</option>
+                                    </select>
+                                    <span class="error" *ngIf="password.invalid && password.touched">Please enter password</span>
+                                </div> -->
+                            </div> 
+                            <div class="fplink">
+                                <a [routerLink]="['reset password']">Forgot Password?</a>
+                            </div>
+                            <div class="actions">
+                                <button class="btnd" type="submit"
+                                    *ngIf="username.valid && password.valid">Login</button>
+                                <button class="btnd" type="submit" disabled *ngIf="!username.valid || !password.valid">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+</div>

@@ -1,0 +1,187 @@
+section {
+    height: 100vh;
+    width: 100%;
+    /* background: radial-gradient(circle,#ca7978 ,#0c2750,#d5d2fc); */
+    background-image: url(../../../assets/images/bg.png);
+    background-size: 200%;
+}
+
+.login-container {
+    overflow: hidden;
+    padding: 0px;
+    position: relative;
+    margin-top: 150px;
+    height: 400px;
+    background-color: rgba(220, 220, 220, 0.2);
+    box-shadow: 2px 2px 0px 0px rgba(220, 220, 220, 0.7), 4px 5px 5px 0px rgba(220, 220, 220, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+}
+
+.login-nav {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-items {
+    width: 70%;
+    height: 50px;
+    position: relative;
+}
+
+.nav-items button {
+    width: 50%;
+    height: 100%;
+    outline: none;
+    border: none;
+    background: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
+}
+
+.nav-items button.active {
+    font-weight: bold;
+    color: white;
+}
+
+.login-nav .underline {
+    width: 100%;
+    height: 3px;
+    background: rgba(177, 52, 47, 0.2);
+    border-radius: 10px;
+}
+
+.login-nav .underline-active {
+    position: absolute;
+    bottom: -3px;
+    width: 50%;
+    height: 3px;
+    background: white;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+.form-main {
+    width: 70%;
+    padding-top: 20px;
+}
+
+.admin-login {
+    transform: translateX(100%);
+    transition: 0.5s;
+    position: absolute;
+    width: 100%;
+    top: 80px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.faculty-login {
+    transition: 0.5s;
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-main .title p {
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+}
+
+.floating-label {
+    position: relative;
+    margin-top: 30px;
+}
+
+.floating-input {
+    font-size: 14px;
+    padding: 4px 4px;
+    display: block;
+    width: 100%;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #757575;
+}
+
+.floating-input:focus, .floating-select:focus {
+    outline: none;
+    border-bottom: 2px solid white;
+}
+
+label {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 14px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 5px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.floating-input:focus~label, .floating-input:not(:placeholder-shown)~label {
+    top: -18px;
+    font-size: 14px;
+    left: 0px;
+    color: white;
+}
+
+.floating-select:focus~label, .floating-select:not([value=""]):valid~label {
+    top: -18px;
+    left: 0px;
+    font-size: 14px;
+    color: white;
+}
+
+input {
+    padding-left: 10px;
+    color: white;
+}
+
+.btnd {
+    background: none;
+    border:2px solid white;
+    border-radius: 50px;
+    padding:5px 20px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.actions{
+    text-align: right;
+    width:100%;
+}
+
+.fplink{
+    margin-top:20px;
+}
+
+.fplink a{
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.fplink a:hover{
+    color: rgba(255, 255, 255, 1);
+}
+
+.btnd:hover{
+    color: var(--primary-color-dark);
+    background-color: white;
+}
+
+.error {
+    color: red;
+}

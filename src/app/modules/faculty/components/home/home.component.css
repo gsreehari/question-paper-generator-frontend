@@ -1,0 +1,17 @@
+.routout{
+    padding:0;
+    margin:0;
+}
+
+.container-fluid{
+    margin:0 !important;
+    padding:0 !important;
+    padding-top: 20px !important;
+}
+
+.page-wrapper{
+    margin-left:0px;
+    padding:0px;
+    margin-top: 68px;
+    min-height: 0px !important;
+}

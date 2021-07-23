@@ -1,0 +1,35 @@
+.username{
+    font-size:20px;
+}
+
+.side-role{
+    font-size:18px;
+}
+
+.profile-table, th, td{
+    border:1px solid rgb(196, 196, 196);
+    padding:10px 20px;
+}
+
+.profile-table{
+    width:60%;
+    margin-bottom: 15px;
+}
+
+
+th{
+    font-weight: bold;
+}
+
+.role{
+    display: inline-block;
+    margin-right:15px;
+    background-color: #eaeff2;
+    padding:5px 10px;
+    border-radius: 100px;
+}
+
+.role-active{
+    background-color:green;
+    color:white;
+}

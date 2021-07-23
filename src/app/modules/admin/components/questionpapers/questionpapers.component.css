@@ -1,0 +1,47 @@
+.main{
+    padding: 20px 30px;
+}
+
+.mat-elevation-z8{
+    box-shadow: 2px 2px 1px 1px #d0d9e0 !important;
+    border-radius: 10px;
+}
+
+table{
+    width:100%;
+    border:1px solid rgb(206, 206, 206);
+}
+
+.t{background-color: white;}
+
+th{
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #858bd457;
+    color:blue;
+    text-align: center;
+}
+
+td{
+    vertical-align: middle;
+}
+
+.question-link{
+    color:blue;
+}
+
+.user-link{
+    color:blue;
+}
+
+.t{
+    box-shadow: 1px 1px 10px 2px rgb(219, 219, 219);
+    padding:10px;
+}
+
+.filter{
+    display:flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}

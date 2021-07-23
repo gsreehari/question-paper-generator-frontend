@@ -1,0 +1,21 @@
+<div class="card">
+    <h1 mat-dialog-title>{{data.subjectName}} ({{data.subjectScheme}})</h1>
+    <div mat-dialog-content>
+        <div class="form-group">
+            <label>Exam Type</label>
+            <select class="form-control" [(ngModel)]="data.examType">
+                <option value="first internal">First Internal</option>
+                <option value="second internal">Second Internal</option>
+                <option value="external">External</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Exam Date</label>
+            <input type="date" name="examdate" id="" class='form-control' placeholder="Exam date" [(ngModel)]="data.examDate">
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button mat-button [mat-dialog-close]="data" [disabled]="data.examDate == '' || data.examType == ''" cdkFocusInitial>Generate Paper</button>
+    </div>
+</div>

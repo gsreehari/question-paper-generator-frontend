@@ -1,0 +1,141 @@
+
+<div class="row heading-bg">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <div class="title">
+            <p>User</p>
+        </div>
+    </div>
+    <!-- Breadcrumb -->
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="#"><span>users</span></a></li>
+            <li><a href="#"><span>user</span></a></li>
+            <li class="active"><span>{{userId}}</span></li>
+        </ol>
+    </div>
+    <!-- /Breadcrumb -->
+</div>
+
+<div class="container-fluid pt-25">  
+    <div class="row">
+        <div class="col-lg-3 col-xs-12">
+            <div class="panel panel-default card-view  pa-0">
+                <div class="panel-wrapper collapse in">
+                    <div class="panel-body  pa-0">
+                        <div class="profile-box">
+                            <div class="profile-cover-pic">
+                                <!-- <div class="fileupload btn btn-default">
+                                    <span class="btn-text">edit</span>
+                                    <input class="upload" type="file">
+                                </div> -->
+                                <div class="profile-image-overlay"></div>
+                            </div>
+                            <div class="profile-info text-center">
+                                <div class="profile-img-wrap">
+                                    <img class="inline-block mb-10" [src]="userData.userProfilePic ? 'http://localhost:3000/userImage/'+userData.userProfilePic : 'https://i7.pngguru.com/preview/831/88/865/user-profile-computer-icons-user-interface-mystique.jpg'" alt="user">
+                                    <div class="fileupload btn btn-default">
+                                        <span class="btn-text">edit</span>
+                                        <input class="upload" type="file">
+                                    </div>
+                                </div>	
+                                <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-info username">{{userData.userName}}</h5>
+                            </div>	
+                            <div class="social-info">
+                                <!-- <div class="row">
+                                    <div class="col-xs-4 text-center">
+                                        <span class="counts block head-font"><span class="counter-anim">345</span></span>
+                                        <span class="counts-text block">post</span>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <span class="counts block head-font"><span class="counter-anim">246</span></span>
+                                        <span class="counts-text block">followers</span>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <span class="counts block head-font"><span class="counter-anim">898</span></span>
+                                        <span class="counts-text block">tweets</span>
+                                    </div>
+                                </div> -->
+                                <button class="btn btn-info btn-block  btn-anim mt-30" *ngIf="!(currentUser.userId == userId)" (click)='changeEdit()'>{{editMode ? "cancel" : "edit profile"}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 col-xs-12">
+            <div class="panel panel-default card-view pa-0">
+                <div class="panel-wrapper collapse in">
+                    <div class="panel-body pb-0">
+                        <div class="tab-struct custom-tab-1">
+                            <ul role="tablist" class="nav nav-tabs nav-tabs-responsive" id="myTabs_8">
+                                <li class="active" role="presentation"><a data-toggle="tab" id="profile_tab_8" role="tab" href="#profile_8" aria-expanded="true"><span>profile</span></a></li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent_8">
+                                <div id="profile_8" class="tab-pane fade active in" role="tabpanel">
+                                    <div class="col-md-12">
+                                        <div class="pt-20">
+                                            <div class="streamline user-activity">
+                                                <table class="table table-bordered">
+                                                    <tr>
+                                                        <th>User Id</th>
+                                                        <td>{{userData.userId}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Username</th>
+                                                        <td>{{userData.userName}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Email</th>
+                                                        <td>{{userData.userEmail}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>College Id</th>
+                                                        <td>{{userData.collegeId}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>College</th>
+                                                        <td>{{userData.collegeName}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Role</th>
+                                                        <td *ngIf="!editMode">
+                                                            <ul>
+                                                                <li class="role" *ngFor="let role of userData.roles">{{role === 0 ? "Super Admin" : role === 2 ? "Admin" : role === 3 ? "Faculty":"Invalid Role"}}</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td *ngIf="editMode">
+                                                            <div *ngFor="let data of Data; let i=index" class="rolein">
+                                                                <label>
+                                                                  <input type="checkbox" [value]="data.value" [checked]="checked.includes(data.value) ? true:false" (change)="onCheckboxChange($event)" />
+                                                                  {{data.name}}
+                                                                </label>
+                                                            </div>
+                                                            <button class="btn btn-primary btn-sm" (click)="onClick()">Submit</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Status</th>
+                                                        <td *ngIf="!editMode"><span [class]="userData.userStatus == 0 ? 'text-danger' : 'text-success'">{{userData.userStatus == 0 ? "InAccessible" : "Accessible"}}</span></td>
+                                                        <td *ngIf="editMode">
+                                                            <button class="btn btn-sm btn-success" *ngIf='userData.userStatus == 0' (click)='onChangeStatus(1)'>Activate</button>
+                                                            <button class="btn btn-sm btn-danger" *ngIf='userData.userStatus == 1' (click)='onChangeStatus(0)'>Deactivate</button>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+                
+        </div>
+    </div>
+</div>

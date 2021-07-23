@@ -1,0 +1,10 @@
+<div class="main">
+    <div class="title">
+        <p>Subjects</p>
+    </div>
+    <div class="list">
+        <ul>
+            <li *ngFor='let subject of subjects' (click)='createComponent()'>{{subject.subjectName}}</li>
+        </ul>
+    </div>
+</div>

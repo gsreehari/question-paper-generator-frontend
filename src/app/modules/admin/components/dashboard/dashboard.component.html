@@ -1,0 +1,112 @@
+<div class="row heading-bg">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <div class="title">
+            <p>Dashboard</p>
+        </div>
+    </div>
+    <!-- Breadcrumb -->
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="">Dashboard</a></li>
+        </ol>
+    </div>
+    <!-- /Breadcrumb -->
+</div>
+
+<div class="main">
+        <div class="display-main">
+            <div class="item1 item">
+                <a href="" [routerLink]="['/admin/users']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">
+                    <div class="info-stats4">
+                        <div class="info-icon">
+                            <img src="../../../../../assets//images/users.svg">
+                        </div>
+                        <div class="sale-num">
+                            <h2>{{usersCount}}</h2>
+                            <p>Users</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="item2 item">
+                <a href="" [routerLink]="['/admin/subjects']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">
+                    <div class="info-stats4">
+                        <div class="info-icon">
+                            <img src="../../../../../assets//images/subject.svg">
+                        </div>
+                        <div class="sale-num">
+                            <h2>{{subjectsCount}}</h2>
+                            <p>Subjects</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="item3 item">
+                <div class="info-stats4">
+                    <div class="info-icon">
+                        <img src="../../../../../assets//images/questions.svg">
+                    </div>
+                    <div class="sale-num">
+                        <h2>{{questionsCount}}</h2>
+                        <p>Questions</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item4 item">
+                <a href="" [routerLink]="['/admin/questionPapers']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">
+                    <div class="info-stats4">
+                        <div class="info-icon">
+                            <img src="../../../../../assets//images/questionpaper.svg">
+                        </div>
+                        <div class="sale-num">
+                            <h2>{{questionPapersCount}}</h2>
+                            <p>Question papers</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="charts">
+            <div class="chart-wrapper" style=" box-shadow: 1px 1px 1px 1px #d0d9e0;background-color:white; border-radius: 10px;">
+                <div class="chart-header">
+                    <p>Users</p>
+                </div>
+                <canvas
+                    baseChart
+                    [data]="pieChartData" 
+                    [labels]="pieChartLabels"
+                    [colors] = "backgroundColor"
+                    [chartType]="pieChartType"
+                    [plugins]="pieChartPlugins"
+                    [legend]="pieChartLegend">
+                </canvas>
+            </div>
+            <!-- <div class="chart-wrapper" style=" box-shadow: 1px 1px 1px 1px #d0d9e0;background-color:white; border-radius: 10px;">
+                <div class="chart-header">
+                    <p>Branches</p>
+                </div>
+                <canvas
+                baseChart
+                [data]="pieChartData" 
+                [labels]="pieChartLabels"
+                [colors] = "backgroundColor"
+                chartType="doughnut"
+                [plugins]="pieChartPlugins"
+                [legend]="pieChartLegend">
+              </canvas>
+            </div> -->
+            
+            <div class="chart-wrapper" style=" box-shadow: 1px 1px 1px 1px #d0d9e0;background-color:white; border-radius: 10px;">
+                <div class="chart-header">
+                    <p>Subjects</p>
+                </div>
+                <canvas baseChart
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options] = 'barchartoptions'
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType">
+                </canvas>
+            </div>
+        </div>
+</div>

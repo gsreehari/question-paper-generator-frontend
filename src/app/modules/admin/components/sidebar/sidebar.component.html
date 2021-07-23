@@ -1,0 +1,59 @@
+<div class="fixed-sidebar-left">
+    <ul class="nav navbar-nav side-nav nicescroll-bar">
+        <li class="navigation-header">
+            <span>Main</span> 
+            <i class="zmdi zmdi-more"></i>
+        </li>
+        <li>
+            <a href="" [routerLink]="['/admin']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active"><div class="pull-left"><span class="right-nav-text">Dashboard</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr1" class="collapsed" aria-expanded="false"><div class="pull-left"><span class="right-nav-text">User </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+            <ul id="app_dr1" class="collapse-level-1 collapse" aria-expanded="false">
+                <li>
+                    <a href="" [routerLink]="['/admin/user']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Users</a>
+                </li>
+                <li>
+                    <a href="" [routerLink]="['/admin/user/adduser']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Add user</a>
+                </li>
+            </ul>
+        </li>
+        <!-- <li>
+            <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr2" class="collapsed" aria-expanded="false"><div class="pull-left"><span class="right-nav-text">Branch </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+            <ul id="app_dr2" class="collapse-level-1 collapse" aria-expanded="false">
+                <li>
+                    <a href="" [routerLink]="['/admin/branch']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Branches</a>
+                </li>
+                <li>
+                    <a href="" [routerLink]="['/admin/branch/addBranch']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Add branch</a>
+                </li>
+            </ul>
+        </li> -->
+        <li>
+            <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr3" class="collapsed" aria-expanded="false"><div class="pull-left"><span class="right-nav-text">Subject </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+            <ul id="app_dr3" class="collapse-level-1 collapse" aria-expanded="false">
+                <li>
+                    <a href="" [routerLink]="['/admin/subject']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Subjects</a>
+                </li>
+                <li>
+                    <a href="" [routerLink]="['/admin/subject/addsubject']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Add subject</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr4" class="collapsed" aria-expanded="false"><div class="pull-left"><span class="right-nav-text">Question paper</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+            <ul id="app_dr4" class="collapse-level-1 collapse" aria-expanded="false">
+                <li>
+                    <a href="" [routerLink]="['/admin/questionPapers']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Question papers</a>
+                </li>
+                <li>
+                    <a href="" [routerLink]="['/admin/generatequestionpaper']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Generate question paper</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a  href="" [routerLink]="['/admin/questionPaperModel']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active"><div class="pull-left"><span class="right-nav-text">Question Paper model</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+        </li>
+        
+    </ul>
+</div>

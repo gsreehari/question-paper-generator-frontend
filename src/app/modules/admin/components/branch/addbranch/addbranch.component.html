@@ -1,0 +1,56 @@
+<div class="row heading-bg">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <div class="title">
+            <p>Add Branch</p>
+        </div>
+    </div>
+    <!-- Breadcrumb -->
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="">Dashboard</a></li>
+            <li><a href=""><span>Branch</span></a></li>
+            <li class="active"><span>Add Branch</span></li>
+        </ol>
+    </div>
+    <!-- /Breadcrumb -->
+</div>
+
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="title">
+                <p>Add Branch</p>
+            </div><br>
+            <form>
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" placeholder="Branch" name="Branch" required [(ngModel)]="branchName" autocomplete="off" >
+                    </div>
+                    
+                    <div class="col-lg-1"></div>
+                </div><br>
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-5">
+                        <select class="form-control" (change)="changeDegree($event)">
+                            <option value="so">Select degree</option>
+                            <option value="B.Tech">B.Tech</option>
+                            <option value="M.Tech">M.Tech</option>
+                        </select>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-lg-5"></div>
+                    <div class="col-lg-2">
+                        <input type="submit" class="btn btn-primary btn-sm" value="Submit" (click)="submit()"/>
+                    </div>
+                    <div class="col-lg-5"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>

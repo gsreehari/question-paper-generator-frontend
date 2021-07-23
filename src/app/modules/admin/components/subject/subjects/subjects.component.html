@@ -1,0 +1,79 @@
+
+<div class="row heading-bg">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <div class="title">
+            <p>Subjects</p>
+        </div>
+    </div>
+    <!-- Breadcrumb -->
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="">Dashboard</a></li>
+            <li><a href=""><span>Subject</span></a></li>
+            <li class="active"><span>Subjects</span></li>
+        </ol>
+    </div>
+    <!-- /Breadcrumb -->
+</div>
+<div class="mat-elevation-z8 t">
+    <div class="filter">
+        <mat-form-field>
+          <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+      </div>
+    <div class="tbl">
+        <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="subjectId">
+                <th mat-header-cell *matHeaderCellDef> Subject Id </th>
+                <td mat-cell *matCellDef="let element"> <a href="" [routerLink]="['/admin/subjects/subject',element.subjectId]" class="subject-link">{{element.subjectId}}</a> </td>
+            </ng-container>
+            <ng-container matColumnDef="subjectCode">
+                <th mat-header-cell *matHeaderCellDef> Subject Code </th>
+                <td mat-cell *matCellDef="let element"> {{element.subjectCode}}</td>
+            </ng-container>
+            <ng-container matColumnDef="subjectName">
+                <th mat-header-cell *matHeaderCellDef> Subject Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.subjectName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="subjectDegree">
+                <th mat-header-cell *matHeaderCellDef> Subject Degree </th>
+                <td mat-cell *matCellDef="let element"> {{element.subjectDegree}} </td>
+            </ng-container>
+            <ng-container matColumnDef="subjectScheme">
+                <th mat-header-cell *matHeaderCellDef> subject Scheme </th>
+                <td mat-cell *matCellDef="let element"> {{element.subjectScheme}} </td>
+            </ng-container>
+            <ng-container matColumnDef="subjectBranch">
+                <th mat-header-cell *matHeaderCellDef> Subject Branch </th>
+                <td mat-cell *matCellDef="let element"> {{element.subjectBranch}} </td>
+            </ng-container>
+            <ng-container matColumnDef="subjectYear">
+                <th mat-header-cell *matHeaderCellDef> Subject Year </th>
+                <td mat-cell *matCellDef="let element"> {{element.subjectYear}} </td>
+            </ng-container>
+            <ng-container matColumnDef="subjectSemister">
+                <th mat-header-cell *matHeaderCellDef> Subject Semister </th>
+                <td mat-cell *matCellDef="let element"> {{element.subjectSemister}} </td>
+            </ng-container>
+            <ng-container matColumnDef="subjectAddedBy">
+                <th mat-header-cell *matHeaderCellDef> Subject AddedBy </th>
+                <td mat-cell *matCellDef="let element"> {{element.subjectAddedBy}} </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Subject Status </th>
+                <td mat-cell *matCellDef="let element"> <button class="btn btn-danger btn-sm" (click)='deleteSubject(element.subjectId)'>X</button> </td>
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+    <mat-paginator 
+    #paginator 
+    [pageSize]="10" 
+    [pageSizeOptions]="[10, 20, 25]" 
+    showFirstLastButtons
+    >
+    </mat-paginator>
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+</div>

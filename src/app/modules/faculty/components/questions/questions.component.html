@@ -1,0 +1,52 @@
+<div class="main">
+    <div class="mat-elevation-z8 t">
+        <div class="filter">
+            <mat-form-field>
+              <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+          </div>
+        <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="questionId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Question Id </th>
+                <td mat-cell *matCellDef="let element"> <a href="" [routerLink]="['/faculty/question',element.questionId]" class="question-link">{{element.questionId}}</a> </td>
+            </ng-container>
+            <ng-container matColumnDef="question">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Question </th>
+                <td mat-cell *matCellDef="let element"> {{element.question}} </td>
+            </ng-container>
+            <ng-container matColumnDef="subjectName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Subject Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.subjectName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="unit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Unit </th>
+                <td mat-cell *matCellDef="let element"> {{element.unit}} </td>
+            </ng-container>
+            <ng-container matColumnDef="questionMarks">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Question Marks </th>
+                <td mat-cell *matCellDef="let element">{{element.questionMarks}}</td>
+            </ng-container>
+            <ng-container matColumnDef="addedBy">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Added By </th>
+                <td mat-cell *matCellDef="let element">{{element.addedBy}}</td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions </th>
+                <td mat-cell *matCellDef="let element"><button class="btn btn-danger btn-xs" (click)="delete(element.questionId)">X</button></td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <!-- <mat-paginator
+                  [pageSize]="10"
+                  [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator> -->
+        </table>
+        <mat-paginator 
+            #paginator 
+            [pageSize]="10" 
+            [pageSizeOptions]="[10, 20, 25, 50, 100]" 
+            showFirstLastButtons
+        >
+        </mat-paginator>
+    </div>
+</div>

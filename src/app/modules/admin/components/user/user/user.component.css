@@ -1,0 +1,59 @@
+.username{
+    font-size:20px;
+}
+
+.side-role{
+    font-size:18px;
+}
+
+.title p {
+    font-size:18px;
+    color: var(--primary-color-dark);
+}
+
+.card{
+    padding:10px;
+    box-shadow: 3px 3px 4px 1px rgb(230, 230, 230);
+    background-color: #f4f4f4;
+}
+
+.card .title p {
+    font-size:18px;
+    color: var(--primary-color-dark);
+    margin-left: 120px;
+}
+
+.user-profile{
+    width:80px;
+    height:80px;
+    border-radius:100%;
+    float:left;
+}
+
+.profile-table, th, td{
+    border:1px solid rgb(196, 196, 196);
+    padding:10px 20px;
+}
+
+.profile-table{
+    width:60%;
+    margin-bottom: 15px;
+}
+
+
+th{
+    font-weight: bold;
+}
+
+.role{
+    display: inline-block;
+    margin-right:15px;
+    background-color: #eaeff2;
+    padding:5px 10px;
+    border-radius: 100px;
+}
+
+.rolein{
+    display: inline-block;
+    margin-right:10px;
+}

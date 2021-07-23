@@ -1,0 +1,148 @@
+
+<div class="row heading-bg">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <div class="title">
+            <p>Generate question paper</p>
+        </div>
+    </div>
+    <!-- Breadcrumb -->
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="">Dashboard</a></li>
+            <li><a href=""><span>Question paper</span></a></li>
+            <li class="active"><span>Generate question paper</span></li>
+        </ol>
+    </div>
+    <!-- /Breadcrumb -->
+</div>
+<div class="mat-elevation-z8 t">
+    <div *ngIf="!showPaper">
+        <div class="filter">
+            <mat-form-field>
+              <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+          </div>
+        <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="subjectId">
+                <th mat-header-cell *matHeaderCellDef> Subject Id </th>
+                <td mat-cell *matCellDef="let element"> <a href="" style="color: blue;" [routerLink]="['/admin/subjects/subject',element.subjectId]" class="subject-link">{{element.subjectId}}</a> </td>
+            </ng-container>
+            <ng-container matColumnDef="subjectName">
+                <th mat-header-cell *matHeaderCellDef> Subject Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.subjectName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="subjectScheme">
+                <th mat-header-cell *matHeaderCellDef> subject Scheme </th>
+                <td mat-cell *matCellDef="let element"> {{element.subjectScheme}} </td>
+            </ng-container>
+            <ng-container matColumnDef="subjectBranch">
+                <th mat-header-cell *matHeaderCellDef> Subject Branch </th>
+                <td mat-cell *matCellDef="let element"> {{element.subjectBranch}} </td>
+            </ng-container>
+            <ng-container matColumnDef="subjectSemister">
+                <th mat-header-cell *matHeaderCellDef> Subject Semister </th>
+                <td mat-cell *matCellDef="let element"> {{element.subjectSemister}} </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element"> <button class="btn btn-primary btn-sm" (click)='openDialog(element)'>Generate paper</button> </td>
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator 
+            #paginator 
+            [pageSize]="5" 
+            [pageSizeOptions]="[5,10, 20, 25]" 
+            showFirstLastButtons
+        >
+        </mat-paginator>
+    </div>
+
+    <div class="main" *ngIf="showPaper" style="width:760px;display: flex;flex-direction: column;align-items: center; padding:20px; overflow-y: auto; margin-left:50px" >
+        <p>{{paperId}}</p>
+        <div class="printdiv">
+            <div class="paper-main" *ngIf="showPaper" style="min-height: 1050px;width:680px;border: 1px solid gray;padding:20px 40px;">
+                <div class="paper-header-section" style="width:100%;">
+                    <div class="roll-no" style="width: 100%;display: flex;justify-content: flex-end;align-items: center;">
+                        <p style="font-size: 13px;">ROLL NO:&nbsp;&nbsp;</p>
+                        <span>_________________________</span>
+                        <!-- <table class="">
+                            <tr style="width:300px;height:12px;">
+                                <td *ngFor="let i of [].constructor(questionPaper.headerSection.regNo)" style="width:15px;height:15px;border-bottom:1px solid gray;"></td>
+                            </tr>
+                        </table> -->
+                    </div>
+                    <div class="paper-header-details" style="display: flex;align-items: center;flex-direction: column;">
+                        <span class="header-content" style="font-size: 15px;font-weight: bold;text-transform: uppercase;">{{questionPaper.headerSection.headerDetails.title}}</span>
+                        <span class="header-content" style="font-size: 15px;font-weight: bold;text-transform: uppercase;">{{questionPaper.headerSection.headerDetails.examDetails}}</span>
+                        <span class="header-content" style="font-size: 15px;font-weight: bold;text-transform: uppercase;">{{questionPaper.headerSection.headerDetails.sessional}}</span>
+                        <span class="header-content" style="font-size: 15px;font-weight: bold;text-transform: uppercase;">{{questionPaper.headerSection.headerDetails.department}}</span>
+                        <span class="header-content" style="font-size: 15px;font-weight: bold;text-transform: uppercase;"><u>{{questionPaper.headerSection.headerDetails.subject}}</u></span>
+                        <span class="header-content" style="font-size: 15px;font-weight: bold;text-transform: uppercase;">{{questionPaper.headerSection.headerDetails.scheme}}</span>
+                    </div>
+                    <div class="paper-exam-details" style="display: flex;justify-content: space-between;align-items: flex-end;">
+                        <div>
+                            <span class="exam-details">Date: {{questionPaper.headerSection.examDetails.date}}</span><br>
+                            <span class="exam-details">Time: {{questionPaper.headerSection.examDetails.time}}</span>
+                        </div>
+                        <span class="exam-details">Max.Marks: {{questionPaper.headerSection.examDetails.marks}}</span>
+                    </div>
+                    <p style="text-align: center;font-size: 13px;">Note: {{questionPaper.headerSection.examDetails.note}}</p>
+                </div>
+                <div class="questions-section-main">
+                    <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: bold;"> 
+                        <span>Q.no</span>
+                        <span>Question</span>
+                        <span>Marks</span>
+                    </div><br>
+                    <div class="section-main" *ngFor="let section of questionPaper.questionsSection.sections; let i=index" style="font-size: 15px;">
+                        <div *ngIf="i==0" style="display: flex; justify-content: space-between;">
+                            <div style="display: flex;">
+                                <span>1. &nbsp;&nbsp;&nbsp;</span>
+                                <div class="questions" style="display: flex;flex-direction: column; align-items: flex-start;">
+                                    <span *ngFor="let question of section.data; let i=index">
+                                        {{letters[i]}}. {{question.question}}
+                                    </span>
+                                </div>
+                            </div>
+                            <span style="text-align:end;">{{section.count}} x {{section.marks}}={{section.count * section.marks}}M</span>
+                        </div>
+                        <div class="section-head" *ngIf="i!=0"><br>
+                            <p style="text-align: center; font-size: 15px; font-weight: bold;">{{section.name}}</p>
+                            <div style="display: flex;">
+                                <div class="questions" style="display: flex;flex-direction: column; align-items: flex-start; width: 100%;">
+                                    <div *ngFor="let questionslist of section.data; let a=index" style="display: flex;flex-direction: column;width:100%;">
+                                        <div style="display:flex; flex-direction: row;">
+                                            <span>{{i+(a+i)}}. &nbsp;&nbsp;&nbsp;</span>
+                                            <div style="display: flex;flex-direction: column; align-items: flex-start; width: 100%;">
+                                                <div *ngFor="let question of questionslist; let b=index" style="width: 100%;">
+                                                    <div style="display: flex;flex-direction: row; align-items: flex-start; width: 100%;">
+                                                        <span *ngIf="questionslist.length > 1">{{letters[b]}}.</span>
+                                                        <span *ngIf="questionslist.length == 1">&nbsp;&nbsp;&nbsp;</span>
+                                                        <span style="width:90%;word-break: break-word;"> {{question.question}}</span>
+                                                        <span style="width:10%; text-align:end;">{{question.marks}}M</span>
+                                                    </div>
+                                                    <div class="image" *ngIf="question.image" style="display: flex; flex-direction: row; justify-content: center;">
+                                                        <img src="http://ec2-54-204-128-81.compute-1.amazonaws.com:3000/questionImage/{{question.image}}" style="width:200px;height:150px;" alt="image">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p *ngIf="a==0" style="text-align: center;">(OR)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p style="font-size: 10px;">{{paperId}}</p>
+        </div>
+        <div class="options" *ngIf="showPaper" style="margin-top:20px;">
+            <button class="btn btn-primary" (click)="paperprint()" style="margin-right:10px">Print</button>
+            <button class="btn btn-primary" (click)="wordGenerate()">Word</button>
+        </div>
+    </div>
+</div>

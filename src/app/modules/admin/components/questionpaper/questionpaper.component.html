@@ -1,0 +1,80 @@
+<div class="main" style="background-color:white;width:760px;display: flex;flex-direction: column;align-items: center; padding:20px; overflow-y: auto; margin-left:50px" >
+    <p>{{paperId}}</p>
+    <div class="printdiv">
+        <div class="paper-main" style="min-height: 1050px;width:680px;border: 1px solid gray;padding:20px 40px;">
+            <div class="paper-header-section" style="width:100%;">
+                <div class="roll-no" style="width: 100%;display: flex;justify-content: flex-end;align-items: center;">
+                    <p style="font-size: 13px;">ROLL NO:&nbsp;&nbsp;</p>
+                    <span>_________________________</span>
+                </div>
+                <div class="paper-header-details" style="display: flex;align-items: center;flex-direction: column;">
+                    <span class="header-content" style="font-size: 15px;font-weight: bold;text-transform: uppercase;">{{questionPaper.headerSection.headerDetails.title}}</span>
+                    <span class="header-content" style="font-size: 15px;font-weight: bold;text-transform: uppercase;">{{questionPaper.headerSection.headerDetails.examDetails}}</span>
+                    <span class="header-content" style="font-size: 15px;font-weight: bold;text-transform: uppercase;">{{questionPaper.headerSection.headerDetails.sessional}}</span>
+                    <span class="header-content" style="font-size: 15px;font-weight: bold;text-transform: uppercase;">{{questionPaper.headerSection.headerDetails.department}}</span>
+                    <span class="header-content" style="font-size: 15px;font-weight: bold;text-transform: uppercase;"><u>{{questionPaper.headerSection.headerDetails.subject}}</u></span>
+                    <span class="header-content" style="font-size: 15px;font-weight: bold;text-transform: uppercase;">{{questionPaper.headerSection.headerDetails.scheme}}</span>
+                </div>
+                <div class="paper-exam-details" style="display: flex;justify-content: space-between;align-items: flex-end;">
+                    <div>
+                        <span class="exam-details">Date: {{questionPaper.headerSection.examDetails.date}}</span><br>
+                        <span class="exam-details">Time: {{questionPaper.headerSection.examDetails.time}}</span>
+                    </div>
+                    <span class="exam-details">Max.Marks: {{questionPaper.headerSection.examDetails.marks}}</span>
+                </div>
+                <p style="text-align: center;font-size: 13px;">Note: {{questionPaper.headerSection.examDetails.note}}</p>
+            </div>
+            <div class="questions-section-main">
+                <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: bold;"> 
+                    <span>Q.no</span>
+                    <span>Question</span>
+                    <span>Marks</span>
+                </div><br>
+                <div class="section-main" *ngFor="let section of questionPaper.questionsSection.sections; let i=index" style="font-size: 15px;">
+                    <div *ngIf="i==0" style="display: flex; justify-content: space-between;">
+                        <div style="display: flex;">
+                            <span>1. &nbsp;&nbsp;&nbsp;</span>
+                            <div class="questions" style="display: flex;flex-direction: column; align-items: flex-start;">
+                                <span *ngFor="let question of section.data; let i=index">
+                                    {{letters[i]}}. {{question.question}}
+                                </span>
+                            </div>
+                        </div>
+                        <span style="text-align:end;">{{section.count}} x {{section.marks}}={{section.count * section.marks}}M</span>
+                    </div>
+                    <div class="section-head" *ngIf="i!=0"><br>
+                        <p style="text-align: center; font-size: 15px; font-weight: bold;">{{section.name}}</p>
+                        <div style="display: flex;">
+                            <div class="questions" style="display: flex;flex-direction: column; align-items: flex-start; width: 100%;">
+                                <div *ngFor="let questionslist of section.data; let a=index" style="display: flex;flex-direction: column;width:100%;">
+                                    <div style="display:flex; flex-direction: row;">
+                                        <span>{{i+(a+i)}}. &nbsp;&nbsp;&nbsp;</span>
+                                        <div style="display: flex;flex-direction: column; align-items: flex-start; width: 100%;">
+                                            <div *ngFor="let question of questionslist; let b=index" style="width: 100%;">
+                                                <div style="display: flex;flex-direction: row; align-items: flex-start; width: 100%;">
+                                                    <span *ngIf="questionslist.length > 1">{{letters[b]}}.</span>
+                                                    <span *ngIf="questionslist.length == 1">&nbsp;&nbsp;&nbsp;</span>
+                                                    <span style="width:90%;word-break: break-word;"> {{question.question}}</span>
+                                                    <span style="width:10%; text-align:end;">{{question.marks}}M</span>
+                                                </div>
+                                                <div class="image" *ngIf="question.image" style="display: flex; flex-direction: row; justify-content: center;">
+                                                    <img src="localhost:3000/questionImage/{{question.image}}" style="width:200px;height:150px;" alt="image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p *ngIf="a==0" style="text-align: center;">(OR)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p style="font-size: 10px;">{{paperId}}</p>
+    </div>
+    <div class="options" style="margin-top:20px;">
+        <button class="btn btn-primary" (click)="paperprint()" style="margin-right:10px">Print</button>
+        <button class="btn btn-primary" (click)="wordGenerate()">PDF</button>
+    </div>
+</div>

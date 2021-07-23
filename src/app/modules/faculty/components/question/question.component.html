@@ -1,0 +1,56 @@
+<div class="main">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-title">
+                    <p>{{questionData.subjectName}}<span style="font-size: 15px;"> ({{questionData.subjectScheme}})</span></p>
+                </div>
+                <div class="card-body">
+                    <form (ngSubmit)='submit()'>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Question</label>
+                            <textarea class="form-control" [attr.disabled]="!formEdit ? 'disabled' : null" name='question' rows="3" [(ngModel)]="question"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Question image</label>
+                                    <input type="file" namw="questionimage" [attr.disabled]="!formEdit ? 'disabled' : null" class="form-control" (change)="handleFileInput($event.target.files)">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Question unit</label>
+                                    <select class="form-control" name="unit" [(ngModel)]="unit" [attr.disabled]="!formEdit ? 'disabled' : null">
+                                        <option *ngFor='let item of [].constructor(questionData.subjectUnits); let i = index;' [value]='i+1'>{{i+1}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Question marks</label>
+                                    <input type="number" name="marks" class="form-control" [attr.disabled]="!formEdit ? 'disabled' : null" [(ngModel)]="marks">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="image">
+                                    <div *ngIf="questionImg != null">
+                                        <img src="{{ImageUrl}}/{{questionImg}}" alt="" srcset="">
+                                    </div>
+                                    <div *ngIf="questionImg == null">
+                                        <p>No image</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8"></div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-warning btn-xs" *ngIf="!formEdit" (click)="changeEdit()">Edit</button>
+                                <button type="submit" class="btn btn-danger btn-xs" *ngIf="formEdit" (click)="changeEdit()">Cancel</button>
+                                <button type="submit" class="btn btn-primary btn-xs" *ngIf="formEdit" style="margin-left:10px;">Update</button>
+                            </div>
+                        </div>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

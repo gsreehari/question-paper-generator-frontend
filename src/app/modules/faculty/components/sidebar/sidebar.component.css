@@ -1,0 +1,43 @@
+.main{
+    background-color:#f4f4f4;
+    padding:10px 0px 0px 10px; 
+    box-shadow: 2px 2px 1px 1px #d0d9e0;
+}
+
+.title p {
+    font-size:18px;
+    color: var(--primary-color-dark);
+    padding:5px 10px;
+    font-size: 600;
+    border-bottom: 2px solid var(--primary-color-dark);
+    width:95px;
+}
+
+.list{
+    overflow: scroll;
+}
+
+.list ul li{
+    padding:10px 20px;
+}
+
+.list ul li:hover{
+    background-color: var(--primary-color-dark);
+    cursor: pointer;
+    color:white;
+}
+
+.list::-webkit-scrollbar {
+    width: 5px;
+    height:5px;
+}
+
+.list::-webkit-scrollbar-track {
+    background-color: rgb(230, 230, 230); 
+    border-radius: 10px;
+}
+
+.list::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: var(--primary-color-dark); 
+}

@@ -1,0 +1,22 @@
+.q-list{
+    background-color: white;
+    position: absolute;
+    top:65px;
+    right:0;
+    width:150px;
+    padding:15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.175);
+}
+
+.q-list ul li:nth-child(2){
+    margin-top:10px;
+}
+
+.dropdown-toggle:hover{
+    cursor: pointer;
+}
+
+::ng-deep .cdk-overlay-container .flag-menu {
+    margin-top: 17px;
+}

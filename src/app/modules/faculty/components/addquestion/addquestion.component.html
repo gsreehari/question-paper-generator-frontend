@@ -1,0 +1,18 @@
+<div class="main">
+    <div class="sidebar">
+        <div class="title">
+            <p>Subjects</p>
+        </div>
+        <div class="list">
+            <div class="list-group">
+                <p class="list-group-item list-group-item-action" *ngFor='let subject of subjects let i=index' (click)='createComponent(subject,i)' [class]="i == activeLink ? 'active':''">{{subject.subjectName}} ({{subject.subjectScheme}})</p>
+            </div>
+            <!-- <ul>
+                <li *ngFor='let subject of subjects' (click)='createComponent(subject)'>{{subject.subjectName}}</li>
+            </ul> -->
+        </div>
+    </div>
+    <div class="container">
+        <ng-template #viewContainerRef></ng-template>
+    </div>
+</div>

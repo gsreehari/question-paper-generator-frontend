@@ -1,0 +1,42 @@
+.main{
+    padding: 20px 50px;
+}
+
+table{
+    width:100%;
+}
+
+th{
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #858bd457;
+    color:blue;
+    text-align: center;
+}
+
+td{
+    vertical-align: middle;
+}
+
+.question-link{
+    color:blue;
+}
+
+.user-link{
+    color:blue;
+}
+
+.t{
+    padding:10px;
+    background: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px #d0d9e0;
+}
+
+.filter{
+    display:flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
