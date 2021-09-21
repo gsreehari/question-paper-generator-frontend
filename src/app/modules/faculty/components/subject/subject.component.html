@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1">Question unit</label>
                                     <select class="form-control" name="unit" [(ngModel)]="unit">
-                                        <option *ngFor='let item of marksarray; let i = index;' [value]='item.value'>{{item.text}}</option>
+                                        <option *ngFor='let item of unitsArray; let i = index;' [value]='item.value'>{{item.text}}</option>
                                     </select>
                                 </div>
                             </div>

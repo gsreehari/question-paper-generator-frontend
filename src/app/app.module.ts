@@ -36,9 +36,10 @@ const config: SocketIoConfig = { url: "http://localhost:3000", options: {transpo
     LoginComponent,
     ResetPasswordComponent,
     LoaderComponent,
-    QuestionpaperComponent,
+    QuestionpaperComponent
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     AdminModule,
     FacultyModule,
@@ -48,7 +49,6 @@ const config: SocketIoConfig = { url: "http://localhost:3000", options: {transpo
     BrowserAnimationsModule,
     MatCardModule,
     ReactiveFormsModule,
-    RouterModule,
     FormsModule,
     AngularFireAuthModule,
     MatTableModule,
@@ -68,7 +68,7 @@ const config: SocketIoConfig = { url: "http://localhost:3000", options: {transpo
     { provide: HTTP_INTERCEPTORS, useClass: HttpService, multi: true }
   ],
   exports:[
-    AppRoutingModule,
+    AppRoutingModule
   ],
   bootstrap: [AppComponent]
 })

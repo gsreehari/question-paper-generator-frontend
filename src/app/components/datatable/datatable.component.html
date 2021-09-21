@@ -1,0 +1,70 @@
+<div>
+    <div class="top">
+        <div class="filter">
+            <input type="text" placeholder="Search..." (input)="doFilter($event.target.value)"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+    </div><br>
+    <ng-content></ng-content>
+
+    <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
+        <ul class="pagination">
+            <li>
+                <button class="pagination__link" (click)="lastAndFirstPageChange(1)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left w-4 h-4"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg> </button>
+            </li>
+            <li>
+                <button class="pagination__link" (click)="changePage(true,currentPage > 1 ? -1 : -2)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left w-4 h-4"><polyline points="15 18 9 12 15 6"></polyline></svg> </button>
+            </li>
+            <li *ngFor="let page of pages; let index"> <button class="pagination__link" [ngClass]="page === currentPage ? 'active' : ''" (click)="changePage(index < currentPage ? true : false,index)" >{{page}}</button> </li>
+            <li>
+                <button class="pagination__link" (click)="changePage(false,currentPage < totalPages.length ? -1 : -2)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right w-4 h-4"><polyline points="9 18 15 12 9 6"></polyline></svg> </button>
+            </li>
+            <li>
+                <button class="pagination__link" (click)="lastAndFirstPageChange(totalPages.length)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-right w-4 h-4"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg> </button>
+            </li>
+        </ul>
+        <select class="w-20 form-select box sm:mt-0" (change)="paginationCountChange($event)">
+            <option>1</option>
+            <option>2</option>
+            <option>10</option>
+            <option>25</option>
+            <option>35</option>
+            <option>50</option>
+        </select>
+    </div>
+</div>
+
+
+<!-- <div class="main">
+    <div class="top">
+        <div class="filter">
+            <input type="text" placeholder="Search..." (input)="doFilter($event.target.value)"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+    </div><br>
+    <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
+        <ul class="pagination">
+            <li>
+                <button class="pagination__link" (click)="lastAndFirstPageChange(1)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left w-4 h-4"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg> </button>
+            </li>
+            <li>
+                <button class="pagination__link" (click)="changePage(true,currentPage > 1 ? -1 : -2)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left w-4 h-4"><polyline points="15 18 9 12 15 6"></polyline></svg> </button>
+            </li>
+            <li *ngFor="let page of pages; let index"> <button class="pagination__link" [ngClass]="page === currentPage ? 'active' : ''" (click)="changePage(index < currentPage ? true : false,index)" >{{page}}</button> </li>
+            <li>
+                <button class="pagination__link" (click)="changePage(false,currentPage < totalPages.length ? -1 : -2)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right w-4 h-4"><polyline points="9 18 15 12 9 6"></polyline></svg> </button>
+            </li>
+            <li>
+                <button class="pagination__link" (click)="lastAndFirstPageChange(totalPages.length)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-right w-4 h-4"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg> </button>
+            </li>
+        </ul>
+        <select class="w-20 form-select box sm:mt-0" (change)="paginationCountChange($event)">
+            <option>1</option>
+            <option>2</option>
+            <option>10</option>
+            <option>25</option>
+            <option>35</option>
+            <option>50</option>
+        </select>
+    </div>
+</div> -->

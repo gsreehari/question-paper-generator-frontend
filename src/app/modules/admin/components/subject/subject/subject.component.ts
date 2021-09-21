@@ -23,6 +23,8 @@ export class SubjectComponent implements OnInit {
   units:any = "";
   flist = new FormControl();
 
+  formEdit:boolean = false;
+
   yearList: any[] = []
   semList: any[] = []
   subjectId: any;
@@ -71,8 +73,8 @@ export class SubjectComponent implements OnInit {
                   };
 
     this.subjectService.updateSubject(formData).subscribe(res=>{
-      if(res.sstatus =="error"){
-        alert(res.message);
+      if(res.status =="error"){
+        return alert(res.message);
       }
       alert("subject updated");
       this.subjectDetails = res.data;
@@ -128,6 +130,10 @@ export class SubjectComponent implements OnInit {
 
   changesSubjectType(e){
     this.subjectType = e.target.value;
+  }
+
+  toggleEdit(){
+    this.formEdit = !this.formEdit
   }
 
   

@@ -20,7 +20,7 @@ export class FacultyCountResolve implements Resolve<any> {
       {
         subjectsCount:this.subjectService.getSubjectsByUser(userdata.userId),
         questionsCount:this.questionsService.getQuestionsCountByUser(userdata.userId),
-        paperCount:this.questionpaperService.getQuestionPaperByUserId(userdata.userId)
+        paperCount:this.questionpaperService.getQuestionPaperCountByUserId(userdata.userId)
       }
     )
   }

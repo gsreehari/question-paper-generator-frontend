@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SubjectsService } from '../../../../../services/subjects/subjects.service';
 import {FormControl} from '@angular/forms';
+import { BranchService } from '../../../../../services/branch/branch.service';
 
 @Component({
   selector: 'app-addsubject',
@@ -10,38 +11,42 @@ import {FormControl} from '@angular/forms';
 export class AddsubjectComponent implements OnInit {
 
   faculty:any[] = [];
-  degree:String = "";
-  year:String = "";
-  sem:String = "";
-  scheme:String = "";
-  branch:String = "";
-  subjectName:String = "";
-  subjectFaculty:String = "";
-  subjectType:String = "";
-  subjectCode:String = "";
+  degree:string = "";
+  year:string = "";
+  sem:string = "";
+  scheme:string = "";
+  branch:string = "";
+  subjectName:string = "";
+  subjectFaculty:string = "";
+  subjectType:string = "";
+  subjectCode:string = "";
   units:any = "";
   flist = new FormControl();
+  department = "";
 
   yearList: any[] = []
   semList: any[] = []
+  branches:any[] = [];
 
-  constructor(private subjectService:SubjectsService ) { }
+  constructor(private subjectService:SubjectsService,private branchService:BranchService) { }
 
   ngOnInit(): void {
-    this.getfaculty();
+    this.branchService.getBranches().subscribe((res)=>{
+      this.branches = res.data
+    })
   }
 
-  getfaculty(){
-    this.subjectService.getFacultyNames().subscribe((res)=>{
+  getfaculty(department){
+    this.subjectService.getFacultyByBranch(department).subscribe((res)=>{
       this.faculty = res.data
     })
   }
 
   formSubmit(){
     var list = this.flist.value;
-    list = list.map((a) => a.userId);
+    list = list.map((a:any) => a.userId);
     let college = JSON.parse(localStorage.getItem("user")).collegeId
-    this.subjectService.insertSubjectIntoDb(this.subjectName,this.degree,this.scheme,this.branch,this.year,this.sem,this.units,list,this.subjectType,this.subjectCode,college).subscribe((res)=>{
+    this.subjectService.insertSubjectIntoDb(this.subjectName,this.scheme,this.branch,this.year,this.sem,this.units,list,this.subjectType,this.subjectCode,college).subscribe((res)=>{
       if(res.code == 'SIS'){
         this.degree = "";
         this.year = "";
@@ -57,11 +62,14 @@ export class AddsubjectComponent implements OnInit {
     })
   }
 
-  changeDegree(e){
-    this.degree = e.target.value;
+  changeBranch(e){
+    this.degree = e.target.options[e.target.selectedIndex].dataset.degree;
+    this.branch = e.target.value;
     
     this.yearList = []
     this.semList = []
+
+    console.log(e.target.value)
 
     if(this.degree == 'B.Tech'){
       for(let i=1;i<=4;i++){
@@ -75,6 +83,13 @@ export class AddsubjectComponent implements OnInit {
         this.yearList.push(num)
       }
     }
+  }
+
+  changeFacultyBranch(e){
+    this.department = e.target.value;
+    console.log(e.target.value)
+    
+    this.getfaculty(this.department);
   }
 
 

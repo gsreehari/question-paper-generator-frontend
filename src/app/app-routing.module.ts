@@ -70,14 +70,14 @@ const routes: Routes = [
             component :UsersComponent
           },
           {
-            path:"user/:userid",
-            pathMatch : "full",
-            component :UserComponent
-          },
-          {
             path:"adduser",
             pathMatch : "full",
             component :AdduserComponent
+          },
+          {
+            path:":userid",
+            pathMatch : "full",
+            component :UserComponent
           },
           
         ]
@@ -104,14 +104,14 @@ const routes: Routes = [
             component :SubjectsComponent
           },
           {
-            path:"subject/:subjectid",
-            pathMatch : "full",
-            component :SubjectComponent
-          },
-          {
             path:"addsubject",
             pathMatch : "full",
             component :AddsubjectComponent
+          },
+          {
+            path:":subjectid",
+            pathMatch : "full",
+            component :SubjectComponent
           },
           
         ]

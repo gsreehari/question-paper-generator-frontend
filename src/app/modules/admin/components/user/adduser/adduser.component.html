@@ -40,7 +40,7 @@
                         <input type="password" class="form-control" placeholder="Password" name="password" required autocomplete="off" [(ngModel)]="password">
                         &nbsp;&nbsp;&nbsp;<input type="checkbox" name="check" [(ngModel)]="isChecked" (change)="onCheckChange($event.target)"/><span style="font-size:13px">&nbsp;Same as username</span>
                     </div>
-                    <div class="col-lg-5">
+                    <!-- <div class="col-lg-5">
                         <div class="role">
                             <div *ngFor="let data of Data; let i=index" class="rolein">
                                 <label>
@@ -49,12 +49,17 @@
                                 </label>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row">
                     <div class="col-lg-1"></div>
                     <div class="col-lg-10">
-                        <input type="text" class="form-control" placeholder="Branch" name="branch" [(ngModel)]="branch">
+                        <select id="branchSelect" class="selectpicker form-control" name="branch" data-live-search="true" required (change)="changeBranch($event)">
+                            <option value="so">Department</option>
+                            <optgroup *ngFor="let degree of branches" [label]= "degree[0]">
+                                <option *ngFor="let branch of degree[1]" [attr.data-degree]="degree[0]" [value]="branch.branchId">{{branch.branchName}}</option>
+                            </optgroup>
+                        </select>
                     </div>
                 </div>
                 <br><br>

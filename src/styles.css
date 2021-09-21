@@ -68,3 +68,7 @@ html, body {padding:0; margin:0; background-color: #eff1f5;font-family: -apple-s
     border-radius: 10px;
     background-color: white;
 }
+
+/* .mat-form-field-appearance-fill .mat-form-field-flex{
+  padding:0px 10px 0px 10px !important;
+} */

@@ -5,16 +5,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(values: any[], filterString: string): any[] {
+  transform(data: any[], filterString: string): any[] {
 
     const resultArray = [];
-    if (values){
-      if (values.length === 0 || filterString === '') {
-        return values;
+    if (data){
+      if (data.length === 0 || filterString === '') {
+        return data;
       }
 
-      for (const item of values) {
-        if (item.userDisplayName.indexOf(filterString) !== -1) {
+      for (const item of data) {
+        if (item.userDisplayName.indexOf(filterString) !== -1 || item.userId.indexOf(filterString) !== -1) {
           resultArray.push(item);
         }
       }

@@ -39,5 +39,10 @@ export class QuestionpaperService {
     return this.http.get(`${this.API_URL}/questionpaper/getQuestionPaperByUserId/${id}`);
   }
 
+  getQuestionPaperCountByUserId(id:string):Observable<any>{
+    var id = id != "" ? id : null
+    return this.http.get(`${this.API_URL}/questionpaper/getQuestionPaperCountByUser/${id}`);
+  }
+
 
 }

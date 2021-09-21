@@ -16,6 +16,10 @@ export class QuestionService {
     return this.http.get(`${this.API_URL}/questions/getAllQuestions`);
   }
 
+  getAllQuestionsBySubject(subjects:string):Observable<any>{
+    return this.http.get(`${this.API_URL}/questions/getAllQuestionsBySubject/?subjects=${subjects}`);
+  }
+
   getQuestionById(id:string):Observable<any>{
     return this.http.get(`${this.API_URL}/questions/getQuestionById/${id}`);
   }

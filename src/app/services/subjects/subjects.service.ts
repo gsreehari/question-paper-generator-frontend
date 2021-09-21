@@ -28,10 +28,14 @@ export class SubjectsService {
     return this.http.get(`${this.API_URL}/users/getFacultyNames`);
   }
 
-  insertSubjectIntoDb(subjectName,subjectDegree,subjectScheme,subjectBranch,subjectYear,subjectSemister,units,subjectFaculty,subjectType, subjectCode, subjectCollege):Observable<any>{
+  getFacultyByBranch(branch:string):Observable<any>{
+    console.log(branch)
+    return this.http.get(`${this.API_URL}/users/getFacultyByBranch/${branch}`);
+  }
+
+  insertSubjectIntoDb(subjectName,subjectScheme,subjectBranch,subjectYear,subjectSemister,units,subjectFaculty,subjectType, subjectCode, subjectCollege):Observable<any>{
     return this.http.post(`${this.API_URL}/subjects/createSubject`,{
       "subjectName":subjectName,
-      "subjectDegree":subjectDegree,
       "subjectScheme":subjectScheme,
       "subjectBranch":subjectBranch,
       "subjectYear":subjectYear,

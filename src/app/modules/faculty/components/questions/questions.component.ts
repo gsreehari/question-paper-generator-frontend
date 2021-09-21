@@ -20,7 +20,11 @@ export class QuestionsComponent implements OnInit {
   constructor(private questionService:QuestionService) { }
 
   ngOnInit(): void {
-    this.questionService.getAllQuestions().subscribe(res=>{
+    
+    var subjects = JSON.parse(localStorage.getItem('subjects'))
+    var subjectsString = subjects.map(subject => subject.subjectId).join(',')
+    
+    this.questionService.getAllQuestionsBySubject(subjectsString).subscribe(res=>{
       this.addData(res);
     });
   }

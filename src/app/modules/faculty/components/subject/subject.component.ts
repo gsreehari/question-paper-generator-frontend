@@ -15,8 +15,8 @@ export class SubjectComponent implements OnInit {
   fileToUpload: File = null;
   question:string = '';
   unit:any = '';
-  marks:any;
-  marksarray:any[] = [];
+  marks:any = '';
+  unitsArray:any[] = [];
   inputType:number;
   target : DataTransfer
 
@@ -27,17 +27,17 @@ export class SubjectComponent implements OnInit {
     if(this.subject.subjectUnits % 2 === 1){
       for(let i=1;i<=this.subject.subjectUnits;i++){
         if(i === Math.ceil(this.subject.subjectUnits/2)){
-          this.marksarray.push({value:i,text:`${i}.1`});
-          this.marksarray.push({value:i+1,text:`${i}.2`});
+          this.unitsArray.push({value:i,text:`${i}.1`});
+          this.unitsArray.push({value:i+1,text:`${i}.2`});
         }
         else if(i > Math.ceil(this.subject.subjectUnits/2)){
-          this.marksarray.push({
+          this.unitsArray.push({
             value:i+1,
             text:i
           });
         }
         else{
-          this.marksarray.push({
+          this.unitsArray.push({
             value:i,
             text:i
           });
@@ -45,7 +45,7 @@ export class SubjectComponent implements OnInit {
       }
     }else{
       for(let i=1;i<=this.subject.subjectUnits;i++){
-        this.marksarray.push({
+        this.unitsArray.push({
           value:i,
           text:i
         });
@@ -58,6 +58,9 @@ export class SubjectComponent implements OnInit {
   }
 
   submit(){
+    if(this.question === '' || this.unit === '' || this.marks === ''){
+      return alert('All fields are required')
+    }
     var formdata = new FormData();
     formdata.append('question',this.question);
     if(this.fileToUpload){
@@ -69,7 +72,7 @@ export class SubjectComponent implements OnInit {
     formdata.append('subjectId',this.subject.subjectId);
     formdata.append('userId',this.user.userId);
     formdata.append('questionmarks',this.marks);
-    formdata.append('collegeId','1766210230');
+    formdata.append('collegeId','64560');
     this.questionService.insertQuestion(formdata).subscribe((res)=>{
       alert(res.message)
     })

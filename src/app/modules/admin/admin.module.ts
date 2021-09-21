@@ -35,10 +35,12 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { QuestionpapermodelComponent } from './components/questionpapermodel/questionpapermodel.component';
 import { NgJsonEditorModule } from 'ang-jsoneditor';
 import { AddbranchComponent } from './components/branch/addbranch/addbranch.component';
-import { BranchsComponent } from './components/branch/branchs/branchs.component' 
+import { BranchsComponent } from './components/branch/branchs/branchs.component' ;
+
+import { DataTableComponent } from '../../components/datatable/datatable.component';
 
 @NgModule({
-  declarations: [HomeComponent, HeaderComponent, SidebarComponent, DashboardComponent, ProfileComponent, SubjectsComponent, AddsubjectComponent, SubjectComponent, UsersComponent, AdduserComponent, UserComponent, QuestionpapersComponent, QuestionpaperComponent, QuestionpapergeneratorComponent, QuestionpaperdataComponent, QuestionpapermodelComponent, AddbranchComponent, BranchsComponent],
+  declarations: [HomeComponent, HeaderComponent, SidebarComponent, DashboardComponent, ProfileComponent, SubjectsComponent,DataTableComponent, AddsubjectComponent, SubjectComponent, UsersComponent, AdduserComponent, UserComponent, QuestionpapersComponent, QuestionpaperComponent, QuestionpapergeneratorComponent, QuestionpaperdataComponent, QuestionpapermodelComponent, AddbranchComponent, BranchsComponent],
   imports: [
     MatButtonModule,
     PipesModule.forRoot(),
@@ -63,7 +65,7 @@ import { BranchsComponent } from './components/branch/branchs/branchs.component'
   providers: [
   ],
   exports:[
-    NgJsonEditorModule,NgxJsonViewerModule,ChartsModule,HomeComponent, HeaderComponent, SidebarComponent, DashboardComponent, ProfileComponent, SubjectsComponent, AddsubjectComponent, SubjectComponent, UsersComponent, AdduserComponent, UserComponent
+    NgJsonEditorModule,NgxJsonViewerModule,ChartsModule,HomeComponent, HeaderComponent,DataTableComponent, SidebarComponent, DashboardComponent, ProfileComponent, SubjectsComponent, AddsubjectComponent, SubjectComponent, UsersComponent, AdduserComponent, UserComponent
   ],
 })
 export class AdminModule { }

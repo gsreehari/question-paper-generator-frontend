@@ -40,13 +40,14 @@ export class AdduserComponent implements OnInit {
 
   formSubmit(){
     var rolelist = this.form;
-    var roles = rolelist.value.checkArray.map((item)=>parseInt(item));
+    // var roles = rolelist.value.checkArray.map((item)=>parseInt(item));
+    var roles = [3]
 
     if(this.username === '' || this.email === '' || this.password === '' || roles.length === 0 || this.branch === ''){
       return alert('all fields are required') 
     }
     this.usersService.insertUserIntoDb(this.username,this.email,this.password,this.branch,roles).subscribe((res)=>{
-      if(res.code == 'UIS'){
+      if(res.status === "success"){
         alert("User added.");
         this.username = '';
         this.password = '';
@@ -55,6 +56,11 @@ export class AdduserComponent implements OnInit {
         this.isChecked = false;
       }
     })
+  }
+
+  changeBranch(e){
+    this.branch = e.target.value;
+    
   }
 
   onCheckboxChange(e) {

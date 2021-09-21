@@ -28,47 +28,36 @@
                     <p class="title">Subject</p>
                     <div class="row">
                         <div class="col-lg-4">
-                            <select class="form-control" required (change)="changeDegree($event)">
-                                <option value="so">Degree</option>
-                                <option value="B.Tech">B.Tech</option>
-                                <option value="M.Tech">M.Tech</option>
+                            <select class="form-control" name="branch" required (change)="changeBranch($event)">
+                                <option value="so">Department</option>
+                                <optgroup *ngFor="let degree of branches" [label]= "degree[0]">
+                                    <option *ngFor="let branch of degree[1]" [attr.data-degree]="degree[0]" [value]="branch.branchId">{{branch.branchName}}</option>
+                                </optgroup>
                             </select>
+                        </div>
+                        
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" readonly [value]="degree">
                         </div>
                         <div class="col-lg-4">
                             <select class="form-control" required (change)="changeYear($event)">
                                 <option value="so">Year</option>
                                 <option  *ngFor="let val of yearList" [value]="val">{{val}}</option>
-                                <!-- <option value="I">I</option>
-                                <option value="II">II</option>
-                                <option value="III">III</option>
-                                <option value="IV">IV</option> -->
                             </select>
         
-                        </div>
-                        <div class="col-lg-4">
-                            <select class="form-control" required (change)="changeSem($event)">
-                                <option value="so">Semister</option>
-                                <option *ngFor="let sem of semList" [value]="sem">{{sem}}</option>
-                                <!-- <option value="I">I</option>
-                                <option value="II">II</option>
-                                <option value="III">III</option>
-                                <option value="IV">IV</option>
-                                <option value="V">V</option>
-                                <option value="VI">VI</option>
-                                <option value="VII">VII</option>
-                                <option value="VIII">VIII</option> -->
-                            </select>
                         </div>
                     </div>
                     <br>
                     <div class="row">
+                        
                         <div class="col-lg-4">
-                            <input type="number" class="form-control" placeholder="Scheme" name="scheme" required [(ngModel)]="scheme">
-        
+                            <select class="form-control" required (change)="changeSem($event)">
+                                <option value="so">Semister</option>
+                                <option *ngFor="let sem of semList" [value]="sem">{{sem}}</option>
+                            </select>
                         </div>
                         <div class="col-lg-4">
-        
-                            <input type="text" class="form-control" placeholder="Branch" name="branch" required [(ngModel)]="branch">
+                            <input type="number" class="form-control" placeholder="Scheme" name="scheme" required [(ngModel)]="scheme">
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" placeholder="Subject name" name="subjectName" required [(ngModel)]="subjectName">
@@ -85,17 +74,37 @@
                             <select class="form-control" required (change)="changesSubjectType($event)">
                                 <option value="so">Subject type</option>
                                 <option value="s">Normal Subject</option>
-                                <option value="oe">Open Elective (OE)</option>
-                                <option value="pe">Professional Elective (PE)</option>
+                                <option value="oe">Open Elective</option>
+                                <option value="pe">Professional Elective</option>
+                                <option value="md">Minor Degree</option>
+                                <option value="pe">Honours Degree</option>
                             </select>
                         </div>
                     </div>
                 </div>
                 <br><br>
                 <div class="user-main">
-                    <p class="title">Faculty</p>
+                    <p class="/title">Faculty</p>
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
+                            <!-- <select class="form-control" name="branch" required (change)="changeFacultyBranch($event)">
+                                <option value="so">Department</option>
+                                <optgroup *ngFor="let degree of branches" [label]= "degree[0]">
+                                    <option *ngFor="let branch of degree[1]" [attr.data-degree]="degree[0]" [value]="branch.branchId">{{branch.branchName}}</option>
+                                </optgroup>
+                            </select> -->
+                            <mat-form-field>
+                                <mat-label>Department</mat-label>
+                                <mat-select (change)="changeFacultyBranch($event)">
+                                  <mat-optgroup *ngFor="let degree of branches" [label]="degree[0]">
+                                    <mat-option *ngFor="let branch of degree[1]" [attr.data-degree]="degree[0]" [value]="branch.branchId">
+                                        {{branch.branchName}}
+                                    </mat-option>
+                                  </mat-optgroup>
+                                </mat-select>
+                              </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
                             <mat-form-field appearance="fill">
                                 <mat-label>Faculty</mat-label>
                                 <mat-select [formControl]="flist" multiple>
@@ -109,6 +118,7 @@
                                 </mat-select>
                               </mat-form-field>
                         </div>
+                        <div class="col-lg-4"></div>
                     </div>
                 </div>
                 <br><br>
