@@ -95,7 +95,7 @@
                             </select> -->
                             <mat-form-field>
                                 <mat-label>Department</mat-label>
-                                <mat-select (change)="changeFacultyBranch($event)">
+                                <mat-select (selectionChange)="changeFacultyBranch($event)">
                                   <mat-optgroup *ngFor="let degree of branches" [label]="degree[0]">
                                     <mat-option *ngFor="let branch of degree[1]" [attr.data-degree]="degree[0]" [value]="branch.branchId">
                                         {{branch.branchName}}

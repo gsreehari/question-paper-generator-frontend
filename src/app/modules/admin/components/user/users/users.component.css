@@ -63,12 +63,10 @@
     border-color: transparent;
     border-radius: .375rem;
     position: relative;
-}
-
-.box {
     box-shadow: 0 3px 20px rgb(0 0 0 / 4%);
     background-color: rgba(255,255,255,1);
     box-shadow: 1px 1px 1px 1px #d0d9e0;
+    overflow: hidden;
 }
 
 .lg\:flex-row {
@@ -281,4 +279,39 @@ a {
 .form-select{
     width:80px;
     height:2rem;
+}
+
+.options{
+    position: absolute;
+    background-color: #ffffff;
+    top:10px;
+    right: 10px;
+    width:60px;
+    padding:5px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: content-box;
+    border-radius: 5px;
+    transform: translate(0%,-200%);
+    transition: 0.3s;
+    box-shadow: 0px 0px 20px 2px #ECEFF1;
+}
+
+.options a img{
+    height: 21px;
+    width: 21px;
+}
+
+.options button img{
+    height: 20px;
+    width: 20px;
+}
+
+.box:hover .options{
+    transform: translate(0%,0%);
+}
+
+.btn-option-delete{
+    background: none;
+    border: none;
 }

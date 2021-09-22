@@ -29,7 +29,6 @@ export class SubjectsService {
   }
 
   getFacultyByBranch(branch:string):Observable<any>{
-    console.log(branch)
     return this.http.get(`${this.API_URL}/users/getFacultyByBranch/${branch}`);
   }
 
@@ -37,7 +36,7 @@ export class SubjectsService {
     return this.http.post(`${this.API_URL}/subjects/createSubject`,{
       "subjectName":subjectName,
       "subjectScheme":subjectScheme,
-      "subjectBranch":subjectBranch,
+      "subjectDepartment":subjectBranch,
       "subjectYear":subjectYear,
       "subjectSemister":subjectSemister,
       "subjectAddedBy": JSON.parse(localStorage.getItem('user')).userId,
@@ -47,6 +46,7 @@ export class SubjectsService {
       "subjectCode": subjectCode,
       "subjectCollege": subjectCollege
     })
+    // SELECT users.userId,users.userDisplayName,GROUP_CONCAT(subject.subjectName) FROM `users` RIGHT OUTER JOIN subjectfaculty as sf ON users.userId = sf.userId INNER JOIN subject ON subject.subjectId = sf.subjectId GROUP BY sf.userId
   }
 
   getSubjectbyId(id:string):Observable<any>{

@@ -40,9 +40,11 @@ export class SubjectsComponent implements OnInit {
 
 
   deleteSubject(id){
-    this.subjectsservice.deletSubject(id).subscribe((res)=>{
-      this.dataSource = res.data;
-    })
+    if (confirm("are you sure to delete")) {
+      this.subjectsservice.deletSubject(id).subscribe((res)=>{
+        this.dataSource = res.data;
+      })
+    }
   }
 
 }

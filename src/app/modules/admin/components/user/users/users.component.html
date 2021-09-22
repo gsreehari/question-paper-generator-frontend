@@ -44,9 +44,19 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="flex mt-4 lg:mt-0">
+                        <!-- <div class="flex mt-4 lg:mt-0">
                             <a href="" [routerLink]="['/admin/user',user.userId]"
                                 class="btn btn-outline-secondary py-1 px-2">Profile</a>
+                        </div> -->
+                    </div>
+                    <div class="options-div">
+                        <div class="options">
+                            <button class="btn-option-delete">
+                                <img src="../../../../../../assets/images/delete.png" alt="deleteIcon">
+                            </button>
+                            <a href="" [routerLink]="['/admin/user',user.userId]">
+                                <img src="../../../../../../assets/images/edit.png" alt="editIcon">
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -37,6 +37,7 @@ export class AddsubjectComponent implements OnInit {
   }
 
   getfaculty(department){
+    console.log(department)
     this.subjectService.getFacultyByBranch(department).subscribe((res)=>{
       this.faculty = res.data
     })
@@ -86,9 +87,7 @@ export class AddsubjectComponent implements OnInit {
   }
 
   changeFacultyBranch(e){
-    this.department = e.target.value;
-    console.log(e.target.value)
-    
+    this.department = e.value;
     this.getfaculty(this.department);
   }
 
